@@ -15,31 +15,31 @@ class Item
     @label = []
   end
 
-  def set_genre(genre)
+  def add_genre(genre)
     @genre << genre
   end
 
-  def set_author(author)
+  def add_author(author)
     @author << author
   end
 
-  def set_source(source)
+  def add_source(source)
     @source << source
   end
 
-  def set_label(label)
+  def add_label(label)
     @label << label
   end
 
   def can_be_archived?
-    ten_years_ago = Date.today - 10 * 365
+    ten_years_ago = Date.today - (10 * 365)
     @publish_date < ten_years_ago
   end
 
   def move_to_archive
-    if can_be_archived?
-      @archived = true
-      @archived_items << self
-    end
+    return unless can_be_archived?
+
+    @archived = true
+    @archived_items << self
   end
 end
