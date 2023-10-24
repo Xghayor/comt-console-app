@@ -15,19 +15,19 @@ class Item
     @label = []
   end
 
-  def set_genre(genre)
+  def add_genre(genre)
     @genre << genre
   end
 
-  def set_author(author)
+  def add_author(author)
     @author << author
   end
 
-  def set_source(source)
+  def add_source(source)
     @source << source
   end
 
-  def set_label(label)
+  def add_label(label)
     @label << label
   end
 
