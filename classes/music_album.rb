@@ -9,7 +9,9 @@ class MusicAlbum < Item
 
   def can_be_archived?
     super_result = super
-    puts "In MusicAlbum: super: #{super_result} result: #{super_result && @archived}"
-    super_result && @archived
+    !@archived && super_result
   end
+
+  # Define the genre= method to set the genre for the album
+  attr_writer :genre
 end

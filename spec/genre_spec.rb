@@ -1,5 +1,5 @@
 require 'rspec'
-require "./classes/genre"
+require_relative '../classes/genre'
 
 RSpec.describe Genre do
   describe '#initialize' do
