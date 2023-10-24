@@ -16,8 +16,6 @@ CREATE TABLE albums (
 );
 
 CREATE INDEX idx_genre_id ON albums (genre_id);
-This SQL schema defines two tables: genres and albums, with the necessary fields and relationships for storing information about music genres and albums.
-
 
 
 
