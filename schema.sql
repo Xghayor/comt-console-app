@@ -4,7 +4,6 @@ CREATE TABLE genres (
     name VARCHAR(255) NOT NULL
 );
 
-
 CREATE TABLE albums (
     album_id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -15,7 +14,6 @@ CREATE TABLE albums (
     
     FOREIGN KEY (genre_id) REFERENCES genres (genre_id)
 );
-
 
 CREATE INDEX idx_genre_id ON albums (genre_id);
 This SQL schema defines two tables: genres and albums, with the necessary fields and relationships for storing information about music genres and albums.
