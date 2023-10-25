@@ -9,7 +9,7 @@ class Item
     @publish_date = publish_date
     @archived = false
     @archived_items = []
-    @genre = []  
+    @genre = []
     @author = []
     @source = []
     @label = []
