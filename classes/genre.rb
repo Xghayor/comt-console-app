@@ -1,11 +1,10 @@
 require_relative 'item'
-require 'date'
 
 class Genre
   attr_accessor :name, :items
   attr_reader :id
 
-  def initialize(name, id = rand(1..1000))
+  def initialize(name, id = Random.rand(1..1000))
     @id = id
     @name = name
     @items = []
@@ -13,6 +12,6 @@ class Genre
 
   def add_item(item)
     @items << item
-    item.genre = self
+    item.add_genre(self) 
   end
 end

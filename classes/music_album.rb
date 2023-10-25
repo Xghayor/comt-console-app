@@ -1,17 +1,16 @@
-require 'date'
 require_relative 'item'
 
 class MusicAlbum < Item
-  def initialize(publish_date, archived: false)
-    super(publish_date)
-    @archived = archived
+  attr_accessor :on_spotify
+
+  def initialize(publish_date, on_spotify, archived: false)
+    super(publish_date, archived: archived)
+    @on_spotify = on_spotify
   end
 
   def can_be_archived?
     super_result = super
-    !@archived && super_result
+    puts "In MusicAlbum: super: #{super_result} @on_spotify: #{@on_spotify} result: #{super_result && @on_spotify}"
+    super_result && @on_spotify
   end
-
-  # Define the genre= method to set the genre for the album
-  attr_writer :genre
 end
