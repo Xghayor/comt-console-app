@@ -1,4 +1,3 @@
-require 'date'
 require_relative '../classes/music_album'
 
 RSpec.describe MusicAlbum do
