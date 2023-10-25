@@ -2,33 +2,27 @@ require 'date'
 
 class Item
   attr_accessor :publish_date
-  attr_reader :id, :archived, :archived_items
+  attr_reader :id, :archived
 
   def initialize(publish_date)
     @id = rand(1..1000)
-    @publish_date = publish_date
+    @publish_date = Date.parse(publish_date)
     @archived = false
-    @archived_items = []
-    @genre = []
-    @author = []
-    @source = []
-    @label = []
+    @genre = nil
+    @author = nil
+    @label = nil
   end
 
   def add_genre(genre)
-    @genre << genre
+    @genre = genre
   end
 
   def add_author(author)
-    @author << author
-  end
-
-  def add_source(source)
-    @source << source
+    @author = author
   end
 
   def add_label(label)
-    @label << label
+    @label = label
   end
 
   def can_be_archived?
@@ -38,8 +32,6 @@ class Item
 
   def move_to_archive
     return unless can_be_archived?
-
     @archived = true
-    @archived_items << self
   end
 end
