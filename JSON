@@ -1,6 +1,0 @@
-# Save games and authors data to JSON files
-games_data = [@game].to_json
-authors_data = [author].to_json
-
-File.write('games.json', games_data)
-File.write('authors.json', authors_data)
