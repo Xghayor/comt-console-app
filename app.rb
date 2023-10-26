@@ -79,20 +79,21 @@ class App
   def add_book
     print 'Please, enter the book title: '
     title = gets.chomp
-
+  
     print 'Please, enter the book publisher: '
     publisher = gets.chomp
-
+  
     print 'Please, enter the book cover state: '
     cover_state = gets.chomp
-
+  
     print 'Published Date [Enter date in format (yyyy-mm-dd)]: '
     published_date = gets.chomp
     return unless published_date
-
-    @books << Book.new(name, publisher, cover_state, published_date)
+  
+    @books << Book.new(title, publisher, cover_state, published_date)
     puts 'Book created successfully'
   end
+  
 
   def add_game
     puts 'Please write multiplayer: '
