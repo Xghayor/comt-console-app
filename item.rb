@@ -1,3 +1,4 @@
+
 require 'date'
 class Item
   attr_reader :genre, :label, :author
@@ -27,12 +28,6 @@ class Item
 
   def author=(author)
     @author = author
-    author.add_item(self)
-  end
 
-  private
-
-  def can_be_archived?
-    Date.today.year - @published_date.year >= 10
   end
 end
