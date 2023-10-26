@@ -90,7 +90,7 @@ class App
     published_date = gets.chomp
     return unless published_date
 
-    @books << Book.new(title, publisher, cover_state, published_date)
+    @books << Book.new(name, publisher, cover_state, published_date)
     puts 'Book created successfully'
   end
 
@@ -114,7 +114,7 @@ class App
       puts 'There are no books yet! Please add books.'
     else
       @books.each do |book|
-        puts "Name: #{book.title}, Publish Date: #{book.published_date}, Cover State: #{book.cover_state}"
+        puts "Name: #{book.name}, Publish Date: #{book.published_date}, Cover State: #{book.cover_state}"
       end
     end
   end
