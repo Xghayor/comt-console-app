@@ -1,6 +1,6 @@
 require 'json'
 require_relative '../author'
-​
+
 module AuthorsDataController
   def load_authors
     data = []
@@ -12,10 +12,10 @@ module AuthorsDataController
     else
       File.write(file, [])
     end
-​
+
     data
   end
-​
+
   def create_author
     data = []
     @music_albums.each do |author|

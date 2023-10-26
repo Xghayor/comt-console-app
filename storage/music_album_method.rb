@@ -1,6 +1,6 @@
 require 'json'
 require_relative '../music_album'
-​
+
 module MusicAlbumDataController
   def load_music_albums
     data = []
@@ -12,10 +12,10 @@ module MusicAlbumDataController
     else
       File.write(file, [])
     end
-​
+
     data
   end
-​
+
   def create_music_album
     data = []
     @music_albums.each do |album|

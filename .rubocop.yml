@@ -8,7 +8,9 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-
+  Max: 150
+Metrics/MethodLength:
+  Max: 20
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
@@ -31,7 +33,6 @@ Style/DefWithParentheses:
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 
-
 Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
@@ -48,4 +49,12 @@ Style/HashEachMethods:
 Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
-
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Style/OptionalBooleanParameter:
+  Enabled: false
+Metrics/ParameterLists: 
+  Enabled: false
+Layout/EndOfLine:
+  Enabled: false

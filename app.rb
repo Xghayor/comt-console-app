@@ -1,15 +1,18 @@
-
 require_relative 'item'
 require_relative 'music_album'
 require_relative 'genre'
 require_relative 'book'
 require_relative 'label'
+require_relative 'storage/author_method'
+require_relative 'storage/games_method'
 require_relative 'storage/book_method'
 require_relative 'storage/genre_method'
 require_relative 'storage/label_method'
 require_relative 'storage/music_album_method'
 
 class App
+  include AuthorsDataController
+  include GamesDataController
   include BooksDataController
   include MusicAlbumDataController
   include GenreDataController
@@ -17,8 +20,10 @@ class App
 
   def initialize
     @music_albums = load_music_albums
+    @games = load_games
     @genres = load_genres
     @books = load_books
+    @authors = load_authors
     @labels = load_labels
   end
 
@@ -26,84 +31,113 @@ class App
     case user_input
     when '1' then list_books
     when '2' then list_music_albums
-    when '3' then list_genres
-    when '4' then list_labels
-    when '5' then add_book
-    when '6' then add_music_album
-    when '7'
-      nil
+    when '3' then list_games
+    when '4' then list_genres
+    when '5' then list_labels
+    when '6' then list_all_authors
+    when '7' then add_book
+    when '8' then add_music_album
+    when '9' then add_game
     end
   end
 
   def list_music_albums
-    puts 'Music Albums:'
+    puts 'Music Albums'
     @music_albums.each do |music_album|
-      display_music_album(music_album)
+      puts "Name: #{music_album.name}, Publish Date: #{music_album.published_date}, On Spotify: #{music_album.on_spotify}"
     end
   end
 
   def list_genres
     puts 'Genres:'
     @genres.each do |genre|
-      display_genre(genre)
+      puts "Genre Name: #{genre.name}"
+    end
+  end
+
+  def list_all_authors
+    puts 'Authors:'
+    @authors.each do |author|
+      puts "First Name: #{author.first_name}, Last Name: #{author.last_name}"
     end
   end
 
   def add_music_album
-    name = get_user_input('Album Name: ')
-    published_date = get_user_input('Date of publish (yyyy-mm-dd): ')
-    on_spotify = get_user_input('Is it available on Spotify? (Y/N)').downcase == 'y'
+    puts 'Album Name: '
+    name = gets.chomp
+
+    puts 'Date of publish [Enter date in format (yyyy-mm-dd)]'
+    published_date = gets.chomp
+
+    puts 'Is it available on Spotify? Y/N'
+    on_spotify = gets.chomp.downcase == 'y'
 
     @music_albums << MusicAlbum.new(name, published_date, on_spotify)
-    puts 'Music album created'
+    puts 'Album created'
   end
 
   def add_book
-    title = get_user_input('Please, enter the book title: ')
-    publisher = get_user_input('Please, enter the book publisher: ')
-    cover_state = get_user_input('Please, enter the book cover state: ')
-    published_date = get_user_input('Published Date (yyyy-mm-dd): ')
+    print 'Please, enter the book title: '
+    title = gets.chomp
 
+    print 'Please, enter the book publisher: '
+    publisher = gets.chomp
+
+    print 'Please, enter the book cover state: '
+    cover_state = gets.chomp
+
+    print 'Published Date [Enter date in format (yyyy-mm-dd)]: '
+    published_date = gets.chomp
     return unless published_date
 
     @books << Book.new(title, publisher, cover_state, published_date)
     puts 'Book created successfully'
   end
 
+  def add_game
+    puts 'Please write multiplayer: '
+    multiplayer = gets.chomp
+
+    puts 'Please write date of publish [Enter date in format (yyyy-mm-dd)]'
+    published_date = gets.chomp
+
+    puts 'Please write last played date [Enter date in format (yyyy-mm-dd)]'
+    last_played_date = gets.chomp
+
+    @games << Game.new(multiplayer, published_date, last_played_date)
+    puts 'Game is created'
+  end
+
   def list_books
     puts 'Books:'
-    @books.each do |book|
-      display_book(book)
+    if @books.empty?
+      puts 'There are no books yet! Please add books.'
+    else
+      @books.each do |book|
+        puts "Name: #{book.title}, Publish Date: #{book.published_date}, Cover State: #{book.cover_state}"
+      end
+    end
+  end
+
+  def list_games
+    puts 'Games:'
+    if @games.empty?
+      puts 'There are no games yet! Please add games.'
+    else
+      @games.each do |game|
+        puts "Multiplayer: #{game.multiplayer}, Publish Date: #{game.published_date}, Last Played Date: #{game.last_played_date}"
+      end
     end
   end
 
   def list_labels
     puts 'Labels:'
-    @labels.each do |label|
-      display_label(label)
+    if @labels.empty?
+      puts 'There are no labels yet!'
+    else
+      @labels.each do |label|
+        puts "ID: #{label['id']}, Title: #{label['title']}, Color: #{label['color']}"
+      end
     end
-  end
-
-  private
-
-  def display_music_album(music_album)
-    puts "Name: #{music_album.name}, Publish Date: #{music_album.published_date}, On Spotify: #{music_album.on_spotify}"
-  end
-
-  def display_genre(genre)
-    puts "Genre Name: #{genre.name}"
-  end
-
-  def display_book(book)
-    puts "Title: #{book.name}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}, Publish Date: #{book.published_date}"
-  end
-
-  def display_label(label)
-    puts "ID: #{label['id']}, Title: #{label['title']}, Color: #{label['color']}"
-  end
-
-  def get_user_input(prompt)
-    print prompt
-    gets.chomp
   end
 end

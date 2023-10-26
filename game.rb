@@ -1,14 +1,17 @@
-class Game
-  attr_accessor :title, :platform, :last_played_at
+require 'date'
+require_relative 'item'
 
-  def initialize(title, platform)
-    @title = title
-    @platform = platform
-    @last_played_at = Time.now
+class Game < Item
+  attr_accessor :last_played_date, :multiplayer, :published_date
+
+  def initialize(multiplayer, last_played_date, published_date)
+    super(id, name, published_date)
+    @last_played_date = Date.parse(last_played_date)
+    @multiplayer = multiplayer
   end
 
   def can_be_archived?
-    older_than_two_years = Time.now - @last_played_at > 2 * 365 * 24 * 60 * 60
-    older_than_two_years && super
+    duration = Time.now.year - @last_played_date.year
+    super && duration > 2
   end
 end
