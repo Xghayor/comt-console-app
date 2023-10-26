@@ -22,7 +22,6 @@ class Main
     @app.save_books
     puts 'Exiting'
   end
-  
 end
 
 main = Main.new

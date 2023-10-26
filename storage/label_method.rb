@@ -6,7 +6,7 @@ module LabelsDataController
   def load_labels
     file = './json_files/labels.json'
     data = []
-    if File.exist?(file) && File.read(file) != ''
+    if File.exist?(file) && !File.empty?(file)
       JSON.parse(File.read(file)).each do |element|
         data.push(Label.new(id: element['id'].to_i, title: element['title'], color: element['color']))
       end

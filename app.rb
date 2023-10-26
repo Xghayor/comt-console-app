@@ -3,10 +3,10 @@ require_relative 'music_album'
 require_relative 'genre'
 require_relative 'book'
 require_relative 'label'
-require_relative './storage/book_method'
-require_relative './storage/genre_method'
-require_relative './storage/label_method'
-require_relative './storage/music_album_method'
+require_relative 'storage/book_method'
+require_relative 'storage/genre_method'
+require_relative 'storage/label_method'
+require_relative 'storage/music_album_method'
 
 class App
   include BooksDataController
@@ -30,10 +30,9 @@ class App
     when '5' then add_book
     when '6' then add_music_album
     when '7'
-      return
+      nil
     end
   end
-  
 
   def list_music_albums
     puts 'Music Albums:'
