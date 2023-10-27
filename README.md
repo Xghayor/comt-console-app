@@ -29,7 +29,7 @@ https://github.com/Xghayor/ruby-group-capstone.git
 
 **ruby-group-capstone** Is a console app that helps keep records of different types of things: **books**, **music albums**, and **games**.The data is stored in JSON files. A database with tables structure analogical to the program's class structure is prepared.
 
-## Video Presentation [https://drive.google.com/file/d/1r927HLGVXW3egeSP1Xii7LSXzLILJXNf/view?usp=sharing]
+## Video Presentation [https://drive.google.com/file/d/1k07eGHkiUsOLzgWb3zWzl5UdJUATmB3m/view?usp=sharing]
 
 ## 🛠 Built With <a name="built-with"></a>
 
