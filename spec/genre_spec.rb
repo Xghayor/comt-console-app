@@ -1,4 +1,4 @@
-require_relative 'helper'
+require_relative '../genre'
 describe Genre do
   it '@genre should be an instance of Genre class' do
     genre = Genre.new '1', 'pop'
