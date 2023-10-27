@@ -1,5 +1,3 @@
-require_relative 'item'
-
 class MusicAlbum
   attr_accessor :name, :published_date, :on_spotify
 
@@ -10,6 +8,6 @@ class MusicAlbum
   end
 
   def can_be_archived?
-    super and @on_spotify
+    @on_spotify
   end
 end
