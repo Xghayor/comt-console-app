@@ -27,6 +27,7 @@ class App
     @labels = load_labels
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def option_selector(user_input)
     case user_input
     when '1' then list_books
@@ -40,11 +41,12 @@ class App
     when '9' then add_game
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def list_music_albums
     puts 'Music Albums'
-    @music_albums.each do |music_album|
-      puts "Name: #{music_album.name}, Publish Date: #{music_album.published_date}, On Spotify: #{music_album.on_spotify}"
+    @music_albums.each do |a|
+      puts "Name: #{a.name}, Publish Date: #{a.published_date}, On Spotify: #{a.on_spotify}"
     end
   end
 
@@ -124,8 +126,8 @@ class App
     if @games.empty?
       puts 'There are no games yet! Please add games.'
     else
-      @games.each do |game|
-        puts "Multiplayer: #{game.multiplayer}, Publish Date: #{game.published_date}, Last Played Date: #{game.last_played_date}"
+      @games.each do |g|
+        puts "Player: #{g.multiplayer}, Date: #{g.published_date}, Last Played Date: #{g.last_played_date}"
       end
     end
   end

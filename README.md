@@ -125,7 +125,6 @@ To run tests, run the following command:
 ***Mumbere Habert**
 - GitHub: [mumbereh](https://github.com/mumbereh)
 - Twitter: [@mumberehabert1](https://twitter.com/mumberehabert1)
-- LinkedIn: [Mumbere Habert](https://www.linkedin.com/in/mumbere-habert-33898a255/)
 
 👤 **Author3**
 **Ghayoor Ul Baqir**

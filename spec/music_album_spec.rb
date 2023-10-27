@@ -1,4 +1,4 @@
-require_relative 'helper'
+require_relative '../music_album'
 describe MusicAlbum do
   context 'when creating a new Music Album' do
     it 'return a new object who is an instance of MusicAlbum class' do
